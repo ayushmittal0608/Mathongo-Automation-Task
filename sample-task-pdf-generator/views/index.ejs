@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="py-5">
+      <div class="container">
+        <!-- Title -->
+        <div class="row">
+          <div class="col-12">
+            <h2>PDF Generator</h2>
+          </div>
+        </div>
+        <!-- /Title -->
+
+        <!-- JSON File -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <label for="">Enter JSON file name (Make sure the JSON file is inside the db folder):</label>
+            <input class="form-control" type="text" id="jsonFile">
+          </div>
+        </div>
+        <!-- /JSON File -->
+
+        <!-- Btn -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <a href="#" class="btn btn-lg btn-primary" onclick="postData()">Generate</a>
+          </div>
+        </div>
+        <!-- /Btn -->
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+      function postData() {
+        let jsonFile = $('#jsonFile').val();
+
+        console.log('JSON file: ', jsonFile)
+        
+        let query = {
+          jsonFile: jsonFile
+        };
+
+        const myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        const requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: JSON.stringify(query),
+          redirect: 'follow',
+        };
+
+        fetch('http://localhost:3002/fetch-questions', requestOptions)
+          .then((response) => response.text())
+          .then((result) => {
+            // empty session data if exists
+            sessionStorage.setItem('json', '');
+            sessionStorage.setItem('json', result);
+            window.open('/question', '_blank');
+          })
+          .catch((error) => console.log('error', error));
+      }
+    </script>
+  </body>
+</html>

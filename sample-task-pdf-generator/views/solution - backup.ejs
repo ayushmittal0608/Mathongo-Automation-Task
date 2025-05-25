@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solution</title>
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+
+  <style>
+    body {
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
+      line-height: 2 !important;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 350px;
+    }
+
+    .mb-1 {
+      margin-bottom: 0.25rem !important;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem !important;
+    }
+
+    .mb-3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .mb-4 {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 2rem !important;
+    }
+
+    .mt-1 {
+      margin-top: 0.25rem !important;
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem !important;
+    }
+
+    .mt-3 {
+      margin-top: 1rem !important;
+    }
+
+    .mt-4 {
+      margin-top: 1.5rem !important;
+    }
+
+    .mt-5 {
+      margin-top: 2rem !important;
+    }
+
+    .container {
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+
+    .col-12 {
+      width: 50%;
+    }
+
+    #temp {
+      display: none;
+    }
+
+    .d-none {
+      display: none;
+    }
+  </style>
+</head>
+
+<body style="margin: 0">
+
+  <div class="container py-4">
+    <div class="row">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <!-- Content -->
+              <div class="col-xl-12 mb-5">
+                <div class="row" id="page"></div>
+              </div>
+              <!-- /Content -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    generateContent();
+
+    function generateContent() {
+
+      let jsonData = sessionStorage.getItem('json');
+      jsonData = JSON.parse(jsonData);
+
+      document.title = `Solution`;
+
+      renderData(jsonData);
+
+      function renderData(data) {
+
+        const page = document.getElementById('page');
+
+        for (let i = 0; i < data.length; i++) {
+          page.innerHTML += `<div class="col-12" style="page-break-before: always">${data[i].solution.text.replace(/\n/g, '<br>')}</div>`
+        } // loop
+      } // render function
+
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    } // generate function
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+</body>
+
+</html>

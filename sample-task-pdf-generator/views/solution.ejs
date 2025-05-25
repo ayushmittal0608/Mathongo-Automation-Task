@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solution</title>
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+
+    <style>
+      body {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 2 !important;
+      }
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      img {
+        max-width: 350px;
+      }
+      .mb-1 {
+        margin-bottom: 0.25rem !important;
+      }
+      .mb-2 {
+        margin-bottom: 0.5rem !important;
+      }
+      .mb-3 {
+        margin-bottom: 1rem !important;
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem !important;
+      }
+      .mb-5 {
+        margin-bottom: 2rem !important;
+      }
+      .mt-1 {
+        margin-top: 0.25rem !important;
+      }
+      .mt-2 {
+        margin-top: 0.5rem !important;
+      }
+      .mt-3 {
+        margin-top: 1rem !important;
+      }
+      .mt-4 {
+        margin-top: 1.5rem !important;
+      }
+      .mt-5 {
+        margin-top: 2rem !important;
+      }
+
+      .my-1 {
+        margin-top: 0.25rem !important;
+      }
+
+      .container {
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+
+      .badge {
+        font-weight: bold;
+      }
+
+      .ans {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+      }
+
+      .header,
+      .header-space,
+      .footer,
+      .footer-space {
+        height: 60px;
+      }
+
+      .header {
+        position: fixed;
+        display: grid;
+        font-family: Arial, Helvetica, sans-serif;
+        grid-template-columns: auto auto;
+        width: 100%;
+        top: -200px;
+      }
+
+      .footer {
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        bottom: 0;
+      }
+
+      .watermark {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: min-content(100px, auto);
+        grid-gap: 10px;
+        max-width: 1000px;
+        opacity: 0.1;
+        top: 200px;
+        bottom: 60px;
+      }
+
+      .watermark > .item {
+        width: 20%;
+      }
+
+      .watermark > .item > img {
+        width: 110px;
+        height: auto;
+      }
+
+      @media print {
+        .header {
+          top: 0;
+        }
+        #temp {
+          display: none;
+        }
+        .d-none {
+          display: none;
+        }
+        .watermark {
+          top: 60px;
+        }
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0">
+    <div class="header">
+      <div style="text-align: left">
+        <h5 style="margin-top: 0; margin-bottom: 0.5rem">Sample Task</h5>
+
+        <h5 style="margin-top: 0; margin-bottom: 0.5rem">Hints and Solutions</h5>
+      </div>
+      <div style="text-align: right">
+        <h5 style="margin-top: 0; margin-bottom: 0.5rem">Solutions</h5>
+
+        <h5 style="margin-top: 0; margin-bottom: 0.5rem">MathonGo</h5>
+      </div>
+    </div>
+    <div class="watermark">
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+      <!-- row -->
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <div class="item">
+        <img src="brand/marks/logo.svg" />
+      </div>
+      <!-- /row -->
+    </div>
+    <div class="footer" style="width: 100%">
+      <div style="text-align: center; margin: 0 auto">
+        <h5 style="margin-top: 0; margin-bottom: 0.1rem">MathonGo</h5>
+        <h6 style="margin-top: 0; margin-bottom: 0">https://www.mathongo.com</h6>
+      </div>
+    </div>
+    <div class="container py-4">
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <td>
+                <div class="header-space">&nbsp;</div>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <!-- Content -->
+                <div class="col-xl-12 mb-5">
+                  <div class="row" id="page"></div>
+                </div>
+                <!-- /Content -->
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <div class="footer-space">&nbsp;</div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <script>
+      generateContent();
+
+      function generateContent() {
+
+        let jsonData = sessionStorage.getItem('json');
+        jsonData = JSON.parse(jsonData);
+
+        // set page title for pdf name
+        document.title = `solution_marks`;
+
+        renderData(jsonData);
+
+        function renderData(data) {
+          console.log('Render function called');
+
+          const page = document.getElementById('page');
+
+          for (let i = 0; i < data.length; i++) {
+
+            if (data[i].type !== 'numerical') {
+              if (i == 0) {
+                // solution
+                page.innerHTML += `
+                                <div class="col-12 mb-1">
+                                    <span style="font-size: 14px" class="badge">Q${i + 1}</span>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    ${data[i].solution.text.replace(/\n/g, '<br>')}
+                                </div>
+                            `;
+              } else {
+                // solution
+                page.innerHTML += `
+                                <div class="col-12 mt-4 mb-1">
+                                    <span style="font-size: 14px" class="badge">Q${i + 1}</span>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    ${data[i].solution.text.replace(/\n/g, '<br>')}
+                                </div>
+                            `;
+              }
+            } else {
+              if (i == 0) {
+                // solution
+                page.innerHTML += `
+                                <div class="col-12 mb-1">
+                                    <span style="font-size: 14px" class="badge">Q${i + 1}</span>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    ${data[i].solution.text.replace(/\n/g, '<br>')}
+                                </div>
+                            `;
+              } else {
+                // solution
+                page.innerHTML += `
+                                <div class="col-12 mt-4 mb-1">
+                                    <span style="font-size: 14px" class="badge">Q${i + 1}</span>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    ${data[i].solution.text.replace(/\n/g, '<br>')}
+                                </div>
+                            `;
+              }
+            }
+          } // loop
+        } // render function
+
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+      } // generate function
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  </body>
+</html>
