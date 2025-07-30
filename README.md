@@ -53,6 +53,8 @@ Note: We'll give preference to candidates on a first come first serve basis.
 
 # README-TC-1
     Sample Task-1(Automated PDF Generator) Completed.
+    Loom Video Link - https://www.loom.com/share/f024ddfa38a54efd9cbea5ae21c169cc
 
 # README-TC-2
     Sample Task-2(Image Processing and OCR) Completed.
+    Loom Video Link - https://www.loom.com/share/732fd198628c414abdd94a02bfefb6c0
