@@ -7,45 +7,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from PyPDF2 import PdfMerger
 
-# --- Configuration ---
 PDF_PANEL_URL = "http://localhost:3002/pdf-panel"
 DB_FOLDER = "db"
-DOWNLOAD_DIR = "downloaded_pdfs" # This will store the combined PDFs temporarily
-OUTPUT_MERGED_DIR = "merged_pdfs" # This will store the final renamed PDFs
+DOWNLOAD_DIR = "downloaded_pdfs"
+OUTPUT_MERGED_DIR = "merged_pdfs"
 
-# Define the path to your *manually created* Chrome profile
-# IMPORTANT: REPLACE THIS PATH WITH THE ONE YOU USED IN YOUR CLI COMMAND
-CHROME_USER_DATA_DIR = os.path.abspath("C:\\selenium_chrome_profile") # Example for Windows
-# CHROME_USER_DATA_DIR = os.path.abspath("/Users/YOUR_USERNAME/selenium_chrome_profile") # Example for macOS/Linux
+CHROME_USER_DATA_DIR = os.path.abspath("C:\\selenium_chrome_profile")
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_MERGED_DIR, exist_ok=True)
 
-# --- Selenium WebDriver Setup ---
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument(f"--user-data-dir={CHROME_USER_DATA_DIR}")
-# If you used a specific profile directory within --user-data-dir (e.g., "Profile 1")
-# chrome_options.add_argument("--profile-directory=Profile 1")
 
-# We no longer need print-related prefs as we're using CDP directly for printing
-# and download prefs are handled by CDP's direct file saving.
-# No 'prefs' dictionary is needed if only using CDP for print.
-
-# IMPORTANT FOR DEBUGGING: Keep Chrome visible!
-# Make sure this line is commented out or removed so you can see the browser.
-# chrome_options.add_argument("--headless=new")
-
-# Initialize WebDriver
 service = ChromeService(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-# --- Set the script timeout (PRIMARY FIX FOR "script timeout" ERROR) ---
-# This tells Selenium to wait up to 120 seconds for JavaScript commands to complete.
-driver.set_script_timeout(120) # Set to 120 seconds (2 minutes). Adjust if needed.
 
-# --- Helper function to wait for specific elements to load ---
+driver.set_script_timeout(120)
+
 def wait_for_content_load(driver_instance, timeout=60):
     """
     Waits for the main content container (#page) to be present,
@@ -57,8 +38,7 @@ def wait_for_content_load(driver_instance, timeout=60):
             EC.presence_of_element_located((By.ID, "page"))
         )
         print(f"[{driver_instance.current_url}] Main content container ('#page') is present.")
-        
-        # This 20-second wait is crucial for MathJax to finish typesetting and images to load.
+
         print(f"[{driver_instance.current_url}] Giving MathJax and other content time to render (20 seconds).")
         time.sleep(20) 
         
@@ -67,26 +47,22 @@ def wait_for_content_load(driver_instance, timeout=60):
         print(f"[{driver_instance.current_url}] Error or timeout waiting for initial content container ({e}). Falling back to 20-second sleep.")
         time.sleep(20)
 
-# --- Function to print to PDF using CDP ---
 def print_page_to_pdf_cdp(driver_instance, filename_prefix):
     print(f"[{driver_instance.current_url}] Generating PDF using CDP...")
     
-    # Define PDF options (adjust as needed)
     print_options = {
         'landscape': False,
         'displayHeaderFooter': False,
         'printBackground': True,
-        'preferCSSPageSize': True, # Use CSS @page rules if present
+        'preferCSSPageSize': True, 
         'marginTop': 0.4,
         'marginBottom': 0.4,
         'marginLeft': 0.4,
         'marginRight': 0.4,
     }
     
-    # Execute CDP command to print to PDF
     result = driver_instance.execute_cdp_cmd("Page.printToPDF", print_options)
     
-    # result['data'] contains the PDF as a base64 encoded string
     pdf_data = base64.b64decode(result['data'])
     
     output_path = os.path.join(DOWNLOAD_DIR, f"{filename_prefix}.pdf")
@@ -96,7 +72,6 @@ def print_page_to_pdf_cdp(driver_instance, filename_prefix):
     return output_path
 
 
-# --- Main Automation Script ---
 try:
     json_files = [f for f in os.listdir(DB_FOLDER) if f.endswith('.json')]
     print(f"Found JSON files: {json_files}")
@@ -109,15 +84,14 @@ try:
         print(f"Navigated to {PDF_PANEL_URL}")
 
         try:
-            # Wait for the input field to be present and visible on the PDF_PANEL_URL page
-            input_field = WebDriverWait(driver, 30).until( # Increased initial wait
+            input_field = WebDriverWait(driver, 30).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, "form-control"))
             )
             input_field.clear()
             input_field.send_keys(input_name)
             print("Entered input.")
 
-            original_window = driver.current_window_handle # Store original window handle before clicking
+            original_window = driver.current_window_handle
 
             generate_button = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.LINK_TEXT, "Generate"))
@@ -125,17 +99,13 @@ try:
             generate_button.click()
             print("Clicked 'Generate'.")
 
-            # --- More Robust Window Handling ---
             question_window = None
             try:
-                # Wait for at least one new window to open
                 print(f"[{driver.current_url}] Waiting for a new window to open for up to 90 seconds...")
                 WebDriverWait(driver, 90).until(EC.new_window_is_opened(driver.window_handles))
                 
-                # Get all current window handles
                 all_handles = driver.window_handles
                 
-                # Iterate through handles to find the new one that isn't the original
                 for handle in all_handles:
                     if handle != original_window:
                         driver.switch_to.window(handle)
@@ -267,19 +237,15 @@ try:
             driver.execute_script(inject_solution_script)
             print("Injected JavaScript to add solutions to the question page.")
 
-            # Give time for the injected content and MathJax to render
             print("Giving time for injected solutions and MathJax to render (20 seconds).")
-            time.sleep(20) # Crucial wait after injecting and re-typesetting
+            time.sleep(20)
 
-            # --- Generate the combined PDF using CDP ---
             combined_pdf_path = print_page_to_pdf_cdp(driver, input_name) # Name the PDF after the input_name
             
-            # Move the generated PDF to the final merged directory
             final_output_path = os.path.join(OUTPUT_MERGED_DIR, f"{input_name}.pdf")
             os.rename(combined_pdf_path, final_output_path)
             print(f"Final combined PDF saved as: {final_output_path}")
 
-            # Close the question window after processing
             if question_window:
                 try: 
                     driver.switch_to.window(question_window)
@@ -288,19 +254,17 @@ try:
                 except Exception as close_e: 
                     print(f"Error closing question window {question_window}: {close_e}")
             
-            driver.switch_to.window(original_window) # Switch back to the original panel window
+            driver.switch_to.window(original_window)
             print(f"Switched back to original window: {original_window}")
 
         except Exception as e:
             print(f"An unexpected error occurred during processing for {input_name}: {e}")
-            # Ensure the driver is on a valid window before trying to close others
             try:
                 driver.switch_to.window(original_window)
             except:
                 if driver.window_handles:
                     driver.switch_to.window(driver.window_handles[0])
 
-            # Try to close all other windows if an error occurred
             for handle in driver.window_handles:
                 if handle != driver.current_window_handle:
                     try:
@@ -308,10 +272,10 @@ try:
                         driver.close()
                     except Exception as close_e:
                         print(f"Error closing window {handle} during error cleanup: {close_e}")
-            try: # Try to switch back to the main window just in case
+            try: 
                 driver.switch_to.window(original_window)
             except:
-                pass # Already handled or no valid window
+                pass 
 
 finally:
     driver.quit()

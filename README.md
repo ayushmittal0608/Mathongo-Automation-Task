@@ -50,3 +50,9 @@ Note: We'll give preference to candidates on a first come first serve basis.
 - Efficient use of libraries (e.g., Selenium for web automation).
 - Quality of documentation.
 - Quality of recordings.
+
+# README-TC-1
+    Sample Task-1(Automated PDF Generator) Completed.
+
+# README-TC-2
+    Sample Task-2(Image Processing and OCR) Completed.
