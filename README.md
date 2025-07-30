@@ -37,7 +37,7 @@ Note: We'll give preference to candidates on a first come first serve basis.
 3. A screen recording which shows the working version of Image Processing Task (your approach should be explained clearly).
 
 
-- Mail the zip file and recordings to `aman.jain@mathongo.com` and cc `info@mathongo.com`
+- Mail the zip file and recordings to `***` and cc `***`
 - Subject of the Mail should be - `Software Development - Sample Task`
 
 - Note:
