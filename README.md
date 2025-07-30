@@ -13,12 +13,8 @@
 12. Now open following folder in file explorer - `sample-task-pdf-generator/db`
 13. You will see 9 json files, step 6 to 10 needs to be repeated for all those 9 files in single python script.
 
-Loom Video Link - (https://www.loom.com/share/f024ddfa38a54efd9cbea5ae21c169cc)
-
 # Sample Task Image Processing
 Task Description - https://docs.google.com/document/u/0/d/1v2CE29myRvtOlDY1kVO-z-cWYJYGwmVyGi_VrS5jhDY/mobilebasic?pli=1
-
-Loom Video Link - (https://www.loom.com/share/732fd198628c414abdd94a02bfefb6c0)
 
 ## How to Submit The Task:
 We don't need the source code/script. Just screen record the working version of the script.
@@ -37,7 +33,9 @@ Note: We'll give preference to candidates on a first come first serve basis.
     - a readme.md file, which explains your code and flow of PDF Generation Task.
     - a document which explains your approach for the Image Processing Task.
 2. A screen recording which shows the working version of PDF Generation Script (your approach should be explained clearly).
-3. A screen recording which shows the working version of Image Processing Task (your approach should be explained clearly).
+   Loom Video Link - (https://www.loom.com/share/f024ddfa38a54efd9cbea5ae21c169cc)
+4. A screen recording which shows the working version of Image Processing Task (your approach should be explained clearly).
+   Loom Video Link - (https://www.loom.com/share/732fd198628c414abdd94a02bfefb6c0)
 
 
 - Mail the zip file and recordings to `***` and cc `***`
